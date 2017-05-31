@@ -20,7 +20,7 @@ int main(int arge, char** argv)
     }
     else if (f == 0){
         cout << "Child PID: " << f << '\n';
-        execl("./counter", "counter", 5, (char*)0);
+        execl("./counter", "counter", "5", (char*)NULL);
 
     }
     else{
@@ -32,22 +32,3 @@ int main(int arge, char** argv)
 
 }
 
-int counter(string x)
-{
-    int n;
-    int num = 0;
-    int pid = getpid();
-    
-
-    n = stoi (x);
-
-    for(int c = 0; c < n; c++)
-    {
-        num = num + 1;
-
-        cout << "Process: " << pid << " " << num << '\n';
-    }
-
-    exit(num);
-    return 0;
-}
