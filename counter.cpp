@@ -24,6 +24,5 @@ int main(int arge, char** argv)
         cout << "Process: " << pid << " " << num << '\n';
     }
 
-    return num;
-    exit(0);
+    exit(num);
 }

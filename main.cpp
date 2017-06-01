@@ -29,7 +29,11 @@ int main(int arge, char** argv)
     }
 
     int status =  waitpid(f, &status, 0);
-    cout << "Process " << f << " exited with status: " << num << '\n';
+
+    if(WIFEXITED(status))
+        cout << "Process " << f << " exited with status: " << WEXITSTATUS(status) << '\n';
+    else
+        cout << "Child didn't exit\n";
 
 }
 
