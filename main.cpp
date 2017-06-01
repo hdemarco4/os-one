@@ -13,7 +13,7 @@ int main(int arge, char** argv)
 {
     int pid = getpid();
     int f;
-    int num;
+    int status;
 
     if ((f = fork()) < 0){
         perror("Error");
@@ -21,19 +21,18 @@ int main(int arge, char** argv)
     }
     else if (f == 0){
         cout << "Child PID: " << getpid() << '\n';
-        num = execl("./counter", "counter", "5", (char*)NULL);
+        execl("./counter", "counter", "5", (char*)NULL);
 
     }
     else{
         cout << "Parent PID: " << pid << '\n';
-    }
 
-    int status =  waitpid(f, &status, 0);
+        waitpid(f, &status, 0);
 
-    if(WIFEXITED(status))
-        cout << "Process " << f << " exited with status: " << WEXITSTATUS(status) << '\n';
-    else
-        cout << "Child didn't exit\n";
-
+        if(WIFEXITED(status))
+            cout << "Process " << f << " exited with status: " << WEXITSTATUS(status) << '\n';
+        else
+            cout << "Child didn't exit\n";
+}
 }
 

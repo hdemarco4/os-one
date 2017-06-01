@@ -25,4 +25,5 @@ int main(int arge, char** argv)
     }
 
     exit(num);
+    return num;
 }
