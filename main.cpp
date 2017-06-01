@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string>
 #include <stdlib.h>
+#include <sys/wait.h>
 
 using namespace std;
 
@@ -19,16 +20,16 @@ int main(int arge, char** argv)
 
     }
     else if (f == 0){
-        cout << "Child PID: " << f << '\n';
-        execl("./counter", "counter", "5", (char*)NULL);
+        cout << "Child PID: " << getpid() << '\n';
+        num = execl("./counter", "counter", "5", (char*)NULL);
 
     }
     else{
         cout << "Parent PID: " << pid << '\n';
     }
 
-    pid_t wait(int num);
-    cout << "Process " << f << " exited with status: " << num;
+    int status =  waitpid(f, &status, 0);
+    cout << "Process " << f << " exited with status: " << num << '\n';
 
 }
 

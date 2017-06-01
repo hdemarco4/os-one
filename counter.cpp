@@ -4,18 +4,18 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <main>
 
 using namespace std;
 
-int counter(string x)
+int main(int arge, char** argv)
 {
     int n;
+    
     int num = 0;
     int pid = getpid();
     
 
-    n = stoi (x); 
+    n = stoi (argv[1]); 
 
     for(int c = 0; c < n; c++)
     {
@@ -24,6 +24,6 @@ int counter(string x)
         cout << "Process: " << pid << " " << num << '\n';
     }
 
-    exit(num);
-    return 0;
+    return num;
+    exit(0);
 }
